@@ -1,6 +1,7 @@
 package com.pluralsight.SakilaSpring.dao;
 
 import com.pluralsight.SakilaSpring.models.Film;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
