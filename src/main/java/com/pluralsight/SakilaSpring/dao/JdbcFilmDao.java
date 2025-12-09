@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +17,35 @@ public class JdbcFilmDao implements IFilmDao {
 
     @Override
     public void add(Film film) {
+        // This is the SQL INSERT statement we will run.
+        // We are inserting the film title, rental rate, and language_id.
+        String sql = "INSERT INTO film (title, rental_rate, language_id) VALUES (?, ?, ?)";
 
+        // This is a "try-with-resources" block.
+        // It ensures that the Connection and PreparedStatement are closed automatically after we are done.
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            // Set the first parameter (?) to the film's title.
+            stmt.setString(1, film.getTitle());
+
+            // Set the second parameter (?) to the film's rental rate.
+            stmt.setDouble(2, film.getRentalRate());
+
+            // Set the third parameter (?) to the language_id.
+            // Hard-coding it to 1 because the language_id cannot be NULL in the database.
+            // We are not asking the user for this value in the UI yet.
+            stmt.setInt(3, 1);
+
+            // Execute the INSERT statement — this will add the row to the database.
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            // If something goes wrong (SQL error), print the stack trace to help debug.
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public List<Film> getAll() {
