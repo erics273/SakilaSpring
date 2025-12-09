@@ -16,7 +16,7 @@ public class FilmApp implements CommandLineRunner {
     //we are asking spring to  "inject" a FilmDAO here
     //This is an example of Dependency injection and inversion of control (DI, IC)
     @Autowired
-    @Qualifier("simpleFilmDao")
+    @Qualifier("jdbcFilmDao")
     private IFilmDao filmDao;
 
     @Override
