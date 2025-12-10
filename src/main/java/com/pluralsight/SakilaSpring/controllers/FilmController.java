@@ -4,9 +4,7 @@ import com.pluralsight.SakilaSpring.dao.IFilmDao;
 import com.pluralsight.SakilaSpring.models.Film;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +23,12 @@ public class FilmController {
     @GetMapping("/films/{id}")
     public int getAllFilms(@PathVariable int id){
         return id;
+    }
+
+    //this is a post mapping so it will respond to a post request (Create in Crud)
+    @PostMapping("/films")
+    public void addFilm(@RequestBody Film film){
+        filmDao.add(film);
     }
 
 }

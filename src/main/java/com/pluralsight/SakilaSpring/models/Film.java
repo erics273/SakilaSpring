@@ -2,22 +2,22 @@ package com.pluralsight.SakilaSpring.models;
 
 public class Film {
 
-    private int filmId;
+    private Integer filmId;
     private String title;
-    private double rentalRate;
+    private Double rentalRate;
 
     //empty constructor
     public Film() {
     }
 
     //constructor that allows us to set properties of the object
-    public Film(int filmId, String title, double rentalRate) {
+    public Film(Integer filmId, String title, double rentalRate) {
         this.filmId = filmId;
         this.title = title;
         this.rentalRate = rentalRate;
     }
 
-    public int getFilmId() {
+    public Integer getFilmId() {
         return filmId;
     }
 
