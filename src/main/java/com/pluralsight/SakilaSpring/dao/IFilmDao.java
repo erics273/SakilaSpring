@@ -15,4 +15,15 @@ public interface IFilmDao {
     //C(R)UD
     List<Film> getAll();
 
+    //C(R)UD
+    Film findById(int id);
+
+    void updateById(int id);
+
+    //CRU(D)
+    void deleteById(int id);
+
+
+
+
 }

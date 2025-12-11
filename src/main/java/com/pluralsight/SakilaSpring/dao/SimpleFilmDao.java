@@ -48,4 +48,19 @@ public class SimpleFilmDao implements IFilmDao{
         return films;
     }
 
+    @Override
+    public void deleteById(int id) {
+
+    }
+
+    @Override
+    public Film findById(int id) {
+        return null;
+    }
+
+    @Override
+    public void updateById(int id) {
+
+    }
+
 }
